@@ -9,6 +9,7 @@ const inquirer = require('inquirer');
         message: "Please choose from an option below: ",
         choices: [
           "Add new contact",
+          "Log current date and time",
           "Exit"
         ]
       }
@@ -23,8 +24,12 @@ const inquirer = require('inquirer');
          case "Add new contact":
            this.addContact();
            break;
+         case "Log current date and time":
+           this.getDate();
+           break;
          case "Exit":
            this.exit();
+           break;
          default:
            console.log("Invalid input");
            this.main();
@@ -42,6 +47,14 @@ const inquirer = require('inquirer');
    addContact(){
      this.clear();
      console.log('addContact called');
+     this.main();
+   }
+
+   getDate(){
+     var dt = new Date();
+     var date = dt.toDateString();
+     var time = dt.toLocaleTimeString();
+     console.log(`Date: ${date} Time: ${time}`);
      this.main();
    }
 
